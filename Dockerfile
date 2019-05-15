@@ -32,7 +32,8 @@ RUN pip install \
     && rm -rf /var/lib/apt/lists/* 
 
 EXPOSE 8888
-RUN mkdir /.local && chmod -R 777 /.local
+RUN mkdir /.local && chmod -R 777 /.local &&\
+    mkdir /.jupyter && chmod -R 777 /.jupyter
 
 COPY . /app
 
