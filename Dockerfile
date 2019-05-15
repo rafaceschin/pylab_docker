@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y\
     graphviz=2.40.1*\
     liblapack-dev \
     gfortran \
+    nodejs \ 
+    npm \
 # pip
     && pip install \
     wheel \
@@ -24,10 +26,7 @@ RUN apt-get update && apt-get install -y\
     jupyter==1.0.0 \
     jupyterlab==0.33.12
 
-RUN apt-get install -y \
-    nodejs \
-    npm \
-    && pip install \
+RUN pip install \
     pymc==2.3.6 \ 
     && jupyter labextension install jupyterlab_vim \
     && rm -rf /var/lib/apt/lists/* 
@@ -35,7 +34,6 @@ RUN apt-get install -y \
 EXPOSE 8888
 RUN mkdir /.local && chmod -R 777 /.local
 
-#Copy in code - make this one of the last layers to make build process more efficient
 COPY . /app
 
 # Command to run at startup
