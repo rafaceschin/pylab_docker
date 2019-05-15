@@ -35,6 +35,7 @@ EXPOSE 8888
 RUN mkdir /.local && chmod -R 777 /.local &&\
     mkdir /.jupyter && chmod -R 777 /.jupyter
 
+COPY ./.jupyter /.jupyter
 COPY . /app
 
 # Command to run at startup
